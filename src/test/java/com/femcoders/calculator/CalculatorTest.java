@@ -1,13 +1,14 @@
 package com.femcoders.calculator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -59,7 +60,6 @@ public class CalculatorTest {
     @CsvSource({
         "4, 2, 2",
         "10, 5, 2",
-        "10, 0, 0"
     })
     void shouldReturnDivisionBetweenTwoNumbers(int patata1, int patata2, int expected) {
 
@@ -68,15 +68,14 @@ public class CalculatorTest {
 
     
     @Test
-    public void shouldThrowAnExceptionWhenANumberIsDividedByZero() {
+    void shouldThrowAnExceptionWhenANumberIsDividedByZero() {
         int num1 = 10;
         int num2 = 0;
-        String expectedExceptionMessage = " / by zero";
+        String expectedExceptionMessage = "/ by zero";
 
         ArithmeticException actualException = assertThrows(ArithmeticException.class, () -> calculator.divide(num1, num2));
         
-        assertEquals(expectedExceptionMessage, actualException);
+        assertEquals(expectedExceptionMessage, actualException.getMessage());
     }
 
-    
 }
